@@ -1,0 +1,61 @@
+/*
+File: sortArray.kt
+Authors: Jacob Egestad & Cade Marks
+Description: Takes an array of ints via the command line and prints them in ascending order
+*/
+
+import kotlin.system.exitProcess;
+
+fun main(args: Array<String>){
+    if(args.size == 0){
+        System.err.println("Error: you gotta provide arguments")
+        exitProcess(1)
+    }
+    val arr = convertToInt(args)
+    print("Original arr: ")
+    printArr(arr)
+    bubbleSort(arr)
+    print("Sorted arr: ")
+    printArr(arr)
+}
+
+fun convertToInt(args: Array<String>): Array<Int>{
+    val arr: Array<Int> = Array(args.size){0}
+    var currVal = "hello"
+    try{
+        for (i in args.indices){
+            currVal = args[i]
+            arr[i] = currVal.toInt()
+        }
+    } catch (e: NumberFormatException){
+        System.err.println("Error: '" + currVal + "' can't be converted to an int");
+        exitProcess(1)
+    }
+    return arr
+}
+
+fun bubbleSort(arr: Array<Int>){
+    val end = arr.size
+
+    for(i in 0 until end-1){
+        var wasSwapped = false
+        for(j in 0 until end-1){
+            if(arr[j] > arr[j+1]){
+                wasSwapped = true
+                var temp = arr[j+1]
+                arr[j+1] = arr[j]
+                arr[j] = temp
+            }
+        }
+
+        if(!wasSwapped)
+            break
+    }
+}
+
+fun printArr (arr: Array<Int>){
+    for(num in arr){
+        print(num.toString() + " ")
+    }
+    println()
+}
