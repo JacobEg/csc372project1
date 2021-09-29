@@ -1,10 +1,10 @@
-//TODO: Add person superclass for professor and student, comments, toString methods, more methods
+//TODO: Add comments, toString methods, more methods
 
-class SchoolClass (id: Int, title: String, prof: String) {
-    private val classID: Int
+class SchoolClass (id: Int, title: String, prof: Professor) {
+    private val classID: Int // use val keyword since classID should never change
     private var title: String
-    private var professor: String
-    private val roster : MutableList<Student>
+    private var professor: Professor
+    private val roster : MutableList<Student> // must be a mutable list so students can be added/dropped from class
 
     init {
         classID = id
@@ -13,35 +13,49 @@ class SchoolClass (id: Int, title: String, prof: String) {
         roster = mutableListOf<Student>()
     }
 
-    fun getID(): Int {
+    public fun getID(): Int {
         return classID
     }
 
-    fun getTitle(): String {
+    public fun getTitle(): String {
         return title
     }
 
-    fun getProfessor(): String {
+    public fun getProfessor(): Professor {
         return professor
     }
 
-    fun getRoster(): List<Student> {
+    public fun getRoster(): List<Student> {
         return roster
     }
 
-    fun addStudent(student: Student) {
+    public fun addStudent(student: Student) {
         roster.add(student)
-        student.classList.add(classID)
+        student.classList.add(this)
     }
 
-    fun removeStudent(id: Int) : Student? {
+    public fun removeStudent(id: Int) : Student? {
         for(student in roster) {
             if (student.idNumber == id)
                 roster.remove(student)
-                student.classList.remove(classID)
+                student.dropClass(classID)
                 return student
         }
         return null
+    }
+
+    public fun changeProfessor(newProf: Professor) : Professor {
+        var oldProf: Professor = professor
+        professor = newProf
+        return oldProf
+    }
+
+    public override fun toString() : String {
+        var retString = "Title: $title\nID: $classID\nProfessor: ${professor.getPersonName()}\nRoster:\n"
+        for (student in roster) {
+            retString+="    ${student.getID()}: ${student.getPersonName()}\n"
+        }
+        return retString
     }
 
 }
