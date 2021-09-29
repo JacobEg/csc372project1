@@ -4,7 +4,7 @@ Authors: Jacob Egestad & Cade Marks
 Description: Takes an int via the command line and returns the fibonnaci sequence up
 to and including that position. Passing in 1 will print "0", passing in 2 will print "0 1", etc
 Instructions: Compile via: "kotlinc fibonacci.kt -d [name of jar file] -include-runtime"
-Run via: java -jar [name of jar file] [integer argument]
+Run via: "java -jar [name of jar file] [integer argument]"
 */
 
 import kotlin.system.exitProcess

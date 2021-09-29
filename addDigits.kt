@@ -2,7 +2,8 @@
 Authors: Jacob Egestad & Cade Marks
 Description: Takes exactly one command line argument that is a positive integer and adds
 up the digits.
-
+Instructions: Compile via "kotlinc addDigits.kt -d [name of jar file] -include-runtime"
+Run via "java -jar [name of jar files] [positive integer arguments]"
 */
 
 import kotlin.system.exitProcess

@@ -3,7 +3,7 @@ File: sortArray.kt
 Authors: Jacob Egestad & Cade Marks
 Description: Takes an array of ints via the command line and prints them in ascending order
 Instructions: Compile via: "kotlinc sortArray.kt -d [name of jar file] -include-runtime"
-Run via: java -jar [name of jar file] [integer arguments seperated by spaces]
+Run via: "java -jar [name of jar file] [integer arguments seperated by spaces]"
 */
 
 import kotlin.system.exitProcess;
